@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor de Código</title>
+  <!-- Incluye CodeMirror desde el CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+  <!-- Incluye el modo de lenguaje que desees, por ejemplo, JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/clike/clike.min.js"></script>
+</head>
+<body>
+  <!-- editor -->
+  <textarea id="editor" name="editor">
+    // Tu código aquí
+    function saludar() {
+      console.log("¡Hola, mundo!");
+    }
+  </textarea>
+
+  <script>
+    // Inicializa CodeMirror 
+    var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+      lineNumbers: true, // Muestra números de línea
+      mode: "text/x-csharp" // Usa el modo de C#
+      //mode: "csharp" // Puedes cambiar el modo según el lenguaje
+    });
+  </script>
+</body>
+</html>
