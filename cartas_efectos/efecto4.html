@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reparto y Revelado de Cartas</title>
+  <style>
+    .carta {
+      width: 100px;
+      height: 150px;
+      position: absolute;
+      transition: transform 0.5s;
+      cursor: pointer;
+    }
+
+    .carta img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #mesa {
+      position: relative;
+      margin-top: 50px; /* Espacio entre el mazo y la mesa */
+      perspective: 1000px; /* Agregamos perspectiva para mejorar la apariencia 3D */
+    }
+  </style>
+</head>
+<body style="background-color: rgb(127, 146, 127);">
+  <script>
+    const cartas = [
+      "00_T01A.png", "01_T02.png", "02_T03.png", "03_T04.png", "04_T05.png",
+      "05_T06.png", "06_T07.png", "07_T08.png", "08_T09.png", "09_T10.png",
+      "10_T11J.png", "11_T12Q.png", "12_T13K.png", "13_D01A.png", "14_D02.png",
+      "15_D03.png", "16_D04.png", "17_D05.png", "18_D06.png", "19_D07.png",
+      "20_D08.png", "21_D09.png", "22_D10.png", "23_D11J.png", "24_D12Q.png",
+      "25_D13K.png", "26_C01A.png", "27_C02.png", "28_C03.png", "29_C04.png",
+      "30_C05.png", "31_C06.png", "32_C07.png", "33_C08.png", "34_C09.png",
+      "35_C10.png", "36_C11J.png", "37_C12Q.png", "38_C13K.png", "39_P01A.png",
+      "40_P02.png", "41_P03.png", "42_P04.png", "43_P05.png", "44_P06.png",
+      "45_P07.png", "46_P09.png", "47_P10.png", "48_P11J.png", "49_P12Q.png",
+      "50_P13K.png"
+    ];
+
+    const filas = 4;
+    const columnas = 10;
+
+    // Matriz para rastrear las posiciones de las cartas
+    const posicionesCartas = new Array(filas).fill(null).map(() => new Array(columnas).fill(null));
+
+    // Función para repartir cartas en filas boca abajo
+    function repartirCartas() {
+      const mesa = document.getElementById("mesa");
+      mesa.innerHTML = ""; // Limpiar la mesa antes de repartir
+
+      const cartasAleatorias = [...cartas].sort(() => Math.random() - 0.5);
+
+      cartasAleatorias.forEach((carta, index) => 
+      {
+        const cartaElement = document.createElement("div");
+        cartaElement.classList.add("carta");
+        cartaElement.addEventListener("click", () => darVueltaCarta(cartaElement, `img/${carta}`));
+
+        const cartaImagen = document.createElement("img");
+        cartaImagen.src = "img/51_back.png"; // Parte trasera de la carta
+        cartaElement.appendChild(cartaImagen);
+
+        // Calcular posición en la fila y columna
+        const fila = Math.floor(index / columnas);
+        const columna = index % columnas;
+
+        // Posición inicial en la mano del jugador
+        const posX = columna * (100+2);
+        const posY = fila * (150+2);
+
+        // Guardar la posición de la carta
+        posicionesCartas[fila][columna] = { carta, elemento: cartaElement };
+
+        // Aplicar posición y rotación iniciales
+        cartaElement.style.transform = `translate3d(${posX}px, ${posY}px, 0) rotateY(360deg)`;
+
+        mesa.appendChild(cartaElement);
+
+        // Aplicar un retraso para dar el efecto de repartir
+       
+        setTimeout(() => {
+          // Posición final en la mesa
+          const finalX = columna * (100+2);
+          const finalY = fila * (150+2);
+
+          // Aplicar la posición final y rotación para revelar la carta
+          cartaElement.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) rotateY(0deg)`;
+        }, index * 100); // 100 milisegundos de intervalo
+       
+      });
+    }
+
+    // Función para dar vuelta a una carta al hacer clic
+    function darVueltaCarta(cartaElement, imagenFrente) {
+      // Obtener la posición de la carta en la matriz
+      const fila = Math.floor((cartaElement.offsetTop - 50) / 150);
+      const columna = Math.floor(cartaElement.offsetLeft / 100);
+
+      // Rotar para revelar la parte frontal
+      //cartaElement.style.transform = "rotateY(180deg)";
+
+      // Cambiar la imagen a la parte frontal de la carta después de la rotación
+      setTimeout(() => {
+        cartaElement.querySelector("img").src = imagenFrente;
+      }, 250); // Ajusta este tiempo según la duración de la transición
+    }
+  </script>
+
+  <button onclick="repartirCartas()">Repartir Cartas</button>
+
+  <div id="mesa"></div>
+</body>
+</html>

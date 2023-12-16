@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efecto Dar Vuelta a un Naipe</title>
+  <style>
+    #naipe {
+      width: 200px;
+      height: 300px;
+      position: relative;
+      perspective: 1000px;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.5s; /* Transición para la rotación */
+    }
+
+    #naipe.vuelta {
+      transform: rotateY(180deg);
+    }
+
+    .cara, .dorso {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden; /* Evita el parpadeo durante la animación */
+    }
+
+    .cara img, .dorso img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ajusta la imagen al tamaño del contenedor */
+    }
+
+    .cara {
+      /* Estilo de la cara del naipe */
+      transform: rotateY(0deg);
+    }
+
+    .dorso {
+      /* Estilo del dorso del naipe */
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body style="background-color: rgb(127, 146, 127);">
+  <div id="naipe" onclick="darVueltaNaipe()">
+    <div class="cara"><img src="img/00_T01A.png" alt="Cara del naipe"></div>
+    <div class="dorso"><img src="img/51_back.png" alt="Dorso del naipe"></div>
+  </div>
+
+  <script>
+    function darVueltaNaipe() {
+      var naipe = document.getElementById("naipe");
+      naipe.classList.toggle("vuelta");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dibujo en JavaScript</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="miCanvas" width="400" height="300"></canvas>
+
+  <script>
+    var canvas = document.getElementById("miCanvas");
+    var ctx = canvas.getContext("2d");
+
+    //rectangulo
+    ctx.fillStyle = "#FF0000"; //rojo
+    ctx.fillRect(50, 50, 100, 75); // x, y, ancho, alto
+
+    //circulo
+    ctx.beginPath();
+    ctx.arc(300, 150, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = "#00FF00"; // green
+    ctx.fill();
+
+    //línea
+    ctx.beginPath();
+    ctx.moveTo(200, 50);
+    ctx.lineTo(300, 50);
+    ctx.strokeStyle = "#0000FF"; // blue
+    ctx.lineWidth = 3; // 
+    ctx.stroke();
+  </script>
+</body>
+</html>

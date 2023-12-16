@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reparto y Orden de Cartas</title>
+  
+  <style>
+
+    .carta {
+      width: 100px;
+      height: 150px;
+      position: absolute;
+      transition: transform 0.5s;
+    }
+
+    #mesa {
+      position: relative;
+      margin-top: 50px; /* Espacio entre el mazo y la mesa */
+      background-color: rgb(127, 146, 127);
+    }
+  </style>
+</head>
+<body style="background-color: rgb(127, 146, 127);">
+  <script>
+    const cartas = [
+      "00_T01A.png", "01_T02.png", "02_T03.png", "03_T04.png", "04_T05.png",
+      "05_T06.png", "06_T07.png", "07_T08.png", "08_T09.png", "09_T10.png",
+      "10_T11J.png", "11_T12Q.png", "12_T13K.png", "13_D01A.png", "14_D02.png",
+      "15_D03.png", "16_D04.png", "17_D05.png", "18_D06.png", "19_D07.png",
+      "20_D08.png", "21_D09.png", "22_D10.png", "23_D11J.png", "24_D12Q.png",
+      "25_D13K.png", "26_C01A.png", "27_C02.png", "28_C03.png", "29_C04.png",
+      "30_C05.png", "31_C06.png", "32_C07.png", "33_C08.png", "34_C09.png",
+      "35_C10.png", "36_C11J.png", "37_C12Q.png", "38_C13K.png", "39_P01A.png",
+      "40_P02.png", "41_P03.png", "42_P04.png", "43_P05.png", "44_P06.png",
+      "45_P07.png", "46_P09.png", "47_P10.png", "48_P11J.png", "49_P12Q.png",
+      "50_P13K.png"
+    ];
+
+    // Función para repartir cartas aleatoriamente
+    function repartirCartas() {
+      const mesa = document.getElementById("mesa");
+      mesa.innerHTML = ""; // Limpiar la mesa antes de repartir
+
+      const cartasAleatorias = [...cartas].sort(() => Math.random() - 0.5);
+
+      cartasAleatorias.forEach((carta, index) => {
+        const cartaElement = document.createElement("img");
+        cartaElement.src = `img/${carta}`;
+        cartaElement.classList.add("carta");
+
+        // Posición inicial en la mano del jugador
+        const posX = index * 20;
+        const posY = 0;
+
+        // Aplicar posición inicial
+        cartaElement.style.transform = `translate(${posX}px, ${posY}px)`;
+
+        mesa.appendChild(cartaElement);
+
+        // Aplicar un retraso para dar el efecto de repartir
+        setTimeout(() => {
+          // Posición final en la mesa
+          const finalX = index % 10 * 100;
+          const finalY = Math.floor(index / 10) * 150 + 100;
+
+          // Aplicar la posición final
+          cartaElement.style.transform = `translate(${finalX}px, ${finalY}px)`;
+        }, index * 100); // 100 milisegundos de intervalo
+      });
+    }
+
+    // Función para ordenar cartas con el algoritmo burbuja
+    function ordenarCartas() {
+      const cartasElement = document.querySelectorAll(".carta");
+      const numCartas = cartasElement.length;
+
+      // Algoritmo burbuja
+      for (let i = 0; i < numCartas - 1; i++) {
+        for (let j = 0; j < numCartas - i - 1; j++) {
+          setTimeout(() => {
+            const cartaA = cartasElement[j];
+            const cartaB = cartasElement[j + 1];
+
+            // Intercambiar posiciones si es necesario
+            if (cartaA.src > cartaB.src) {
+              const temp = cartaA.style.transform;
+              cartaA.style.transform = cartaB.style.transform;
+              cartaB.style.transform = temp;
+            }
+          }, (i * numCartas + j) * 100); // 100 milisegundos de intervalo
+        }
+      }
+    }
+  </script>
+
+  <button onclick="repartirCartas()">Repartir Cartas</button>
+  <button onclick="ordenarCartas()">Ordenar Cartas</button>
+
+  <div id="mesa"></div>
+</body>
+</html>
