@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/theme/dracula.min.css"> <!-- Puedes elegir un tema diferente -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+</head>
+<body style="background-color: #f1f5f8; min-width: 340px;">
+    <div id="code-editor"></div>
+
+    <script>
+        // Inicializar CodeMirror
+        var editor = CodeMirror(document.getElementById("code-editor"), {
+            lineNumbers: true,  // Muestra números de línea
+            mode: "javascript", // Especifica el lenguaje de programación
+            theme: "dracula"     // Especifica el tema del editor
+        });
+
+        // Establecer un contenido de ejemplo
+        editor.setValue("console.log('¡Hola, mundo!');");
+    </script>
+</body>
+</html>
