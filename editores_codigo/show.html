@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/theme/dracula.min.css">
+    <!-- Puedes elegir un tema diferente -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+
+    <style>
+        /* Puedes ajustar estas clases según tus necesidades */
+        .absolute {
+        position: absolute;
+        }
+
+        .top-3 {
+        top: 0.75rem; /* Ajusta según tus necesidades */
+        }
+
+        .right-3 {
+        right: 0.75rem; /* Ajusta según tus necesidades */
+        }
+
+        .transition {
+        transition: opacity 0.3s ease; /* Ajusta según tus necesidades */
+        }
+
+        .group-hover\:opacity-80:hover {
+        opacity: 0.8;
+        }
+
+        </style>
+
+        <script>
+            // Puedes agregar funcionalidad JavaScript aquí si es necesario
+            // Por ejemplo, para manejar clics en el botón
+            document.getElementById('myButton').addEventListener('click', function () {
+                alert('Botón clickeado');
+            });
+        </script>
+</head>
+
+<body style="background-color: #f1f5f8; min-width: 340px;">
+
+    <div class="container">
+        <div class="relative group repo-copy-code">
+            <pre>
+                <code class="languaje-python"
+                        using System;
+                </code>
+            </pre>
+            <button class="absolute top-3 right-3 transition opacity-0 group-hover:opacity-80"><svg class="" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" focusable="false" role="img" width="0.9em" height="0.9em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+                    <path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z" transform="translate(0)"></path>
+                    <path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z" transform="translate(0)"></path>
+                    <rect fill="none" width="32" height="32"></rect>
+                </svg></button>
+        </div>
+    </div>
+</body>
+
+</html>
