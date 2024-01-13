@@ -17,18 +17,27 @@
 	<div class="container">
 
 		<div class="jumbotron">
+			<div class="container">
+			<h3 class="display-3"> Preprocesar al subir una imagen</h3>
+			<p>cuando la imagen supere un limite la redimensione a 1024ox por 1024px sin desformar la imagen, es decir, si la imagen es de 2048 por 200, como el valor de 2048px es mas grande, 
+				quedaría finalmente en 1024px por 100px pero si es menor a 1024px por 1024px no haga nada.
+			</p>
+			<p> 
+				Que tome el formato jpg, png, o gif y lo recodifique a jpg
+			</p>
 			<p>
-				cuando la imagen supere un limite la redimensione a 1024 por 1024 sin desformarme la imagen, 
-				es decir, si la imagen es de 2048 por 200, como valor de 2048 es mas grande quedaría de 1024 por 100, 
-				- pero si es menor a 1024 por 1024 pixeles no haga nada, . otra cosa es que tome el formato jpg, png, 
-				o gif y lo recodifique a jpg - 
-				-si supera un tamaño especifico, 		por decirte 5mb le baje la calidad de compresion hasta 5mb
-			</p>	
+				Si supera un tamaño especifico, por decirte 5mb le baje la calidad de compresion hasta 5mb
+			</p>			
+			</div>
 		</div>
 
 		<div class="form">
-			<input type="file" id="inputImage" accept="image/*">
+			<input class="form-control type="file" id="inputImage" accept="image/*">
 			<canvas id="outputCanvas" style="display:none;"></canvas>
+			
+		</div>
+		
+		<div class="text-center">
 			<img id="outputImage" style="max-width: 100%; max-height: 100vh; display: none;" alt="Imagen procesada">
 		</div>
 	<div>
