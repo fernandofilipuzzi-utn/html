@@ -1,4 +1,6 @@
-# html
+# Fragmentos html, imagenes, iconos
 
 
-<a href="https://fernandofilipuzzi-utn.github.io/html/">Git pages</a>
+<a href="https://fernandofilipuzzi-utn.github.io/html/">Ver en git pages</a>
+
+
