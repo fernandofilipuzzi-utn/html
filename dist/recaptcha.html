@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form with hCaptcha</title>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+
+<h2>Contact Form</h2>
+<form action="submit.php" method="POST">
+    <label for="name">Your Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="email">Your Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+    <div class="h-captcha" data-sitekey="a57d1023-4a63-474f-96c6-f1fedb30c43b"></div><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

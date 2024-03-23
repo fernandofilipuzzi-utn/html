@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop Example</title>
+  <style>
+    #drag-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+}
+
+#draggable {
+  padding: 10px;
+  background-color: #ddd;
+  cursor: move;
+}
+
+#drop-area {
+  padding: 10px;
+  background-color: #eee;
+  border: 2px dashed #aaa;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  </style>
+</head>
+<body>
+
+  <div id="drag-area">
+    <div id="draggable" draggable="true">Arrastra este elemento</div>
+    <div id="drop-area">Suelta aquí</div>
+  </div>
+
+  <script>
+    const draggable = document.getElementById('draggable');
+    const dropArea = document.getElementById('drop-area');
+
+    draggable.addEventListener('dragstart', dragStart);
+    dropArea.addEventListener('dragover', dragOver);
+    dropArea.addEventListener('drop', drop);
+
+    function dragStart(event) 
+    {
+      event.dataTransfer.setData('text/plain', 'dragging');
+    }
+
+    function dragOver(event) 
+    {
+      event.preventDefault();
+    }
+
+    function drop(event) 
+    {
+      event.preventDefault();
+      const data = event.dataTransfer.getData('text/plain');
+      if (data === 'dragging') 
+      {
+        dropArea.textContent = '¡Elemento arrastrado y soltado!';
+      }
+    }
+  </script>
+</body>
+</html>
